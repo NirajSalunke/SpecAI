@@ -57,6 +57,7 @@ COPY . .
 
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
+ENV BUILD_STANDALONE=true
 
 # Build the Next.js application.
 RUN pnpm --filter web build
@@ -85,6 +86,10 @@ COPY --from=builder --chown=nextjs:nodejs \
 # Copy static Next.js assets.
 COPY --from=builder --chown=nextjs:nodejs \
     /repo/apps/web/.next/static ./apps/web/.next/static
+
+# Copy public assets
+COPY --from=builder --chown=nextjs:nodejs \
+    /repo/apps/web/public ./apps/web/public
 
 USER nextjs
 
