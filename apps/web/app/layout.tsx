@@ -1,8 +1,13 @@
 import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google"
+import type { Metadata } from "next"
 
 import "@workspace/ui/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@workspace/ui/lib/utils";
+
+export const metadata: Metadata = {
+  title: "SpecAI",
+}
 
 const spaceGrotesk = Space_Grotesk({subsets:['latin'],variable:'--font-sans'})
 
