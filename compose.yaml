@@ -1,0 +1,39 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+      target: development
+
+    working_dir: /repo
+
+    ports:
+      - "3000:3000"
+
+    environment:
+      NODE_ENV: development
+      NEXT_TELEMETRY_DISABLED: "1"
+
+    volumes:
+      # Mount source code for hot reload.
+      - .:/repo
+
+      # Keep pnpm dependencies outside the source bind mount.
+      - root_node_modules:/repo/node_modules
+      - web_node_modules:/repo/apps/web/node_modules
+      - ui_node_modules:/repo/packages/ui/node_modules
+      - eslint_config_node_modules:/repo/packages/eslint-config/node_modules
+      - typescript_config_node_modules:/repo/packages/typescript-config/node_modules
+
+      # Persist Next.js development cache.
+      - web_next:/repo/apps/web/.next
+
+    init: true
+
+volumes:
+  root_node_modules:
+  web_node_modules:
+  ui_node_modules:
+  eslint_config_node_modules:
+  typescript_config_node_modules:
+  web_next:

@@ -1,0 +1,27 @@
+# Git
+.git
+.github
+
+# Dependencies
+**/node_modules
+
+# Next.js
+**/.next
+
+# Turborepo
+**/.turbo
+
+# Build output
+**/dist
+**/coverage
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+**/*.log
+
+# Local project exports
+project-structure.txt
