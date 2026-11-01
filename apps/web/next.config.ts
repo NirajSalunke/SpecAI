@@ -12,6 +12,18 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: monorepoRoot,
   },
+  async rewrites() {
+  return [
+    {
+      source: "/docs",
+      destination: "https://spec-ai.mintlify.site/docs",
+    },
+    {
+      source: "/docs/:path*",
+      destination: "https://spec-ai.mintlify.site/docs/:path*",
+    },
+  ];
+},
 };
 
 export default nextConfig
