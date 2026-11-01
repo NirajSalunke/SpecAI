@@ -1,3 +1,4 @@
+import { ClerkProvider } from "@clerk/nextjs";
 import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google"
 import type { Metadata } from "next"
 import { Analytics } from "@vercel/analytics/next"
@@ -29,8 +30,10 @@ export default function RootLayout({
       className={cn("antialiased", fontMono.variable, "font-sans", spaceGrotesk.variable)}
     >
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
-        <Analytics />
+        <ClerkProvider>
+          <ThemeProvider>{children}</ThemeProvider>
+          <Analytics />
+        </ClerkProvider>
       </body>
     </html>
   )

@@ -25,3 +25,4 @@
 
 # Local project exports
 project-structure.txt
+.pnpm-store/

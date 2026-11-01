@@ -13,6 +13,7 @@ services:
     environment:
       NODE_ENV: development
       NEXT_TELEMETRY_DISABLED: "1"
+      CI: "true"
 
     volumes:
       # Mount source code for hot reload.
